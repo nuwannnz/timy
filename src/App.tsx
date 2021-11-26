@@ -1,13 +1,16 @@
-import { Button } from 'antd';
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import LayoutPage from "./Layout";
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <Button type="primary">Hello</Button>
+      <BrowserRouter>
+        <LayoutPage />
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
