@@ -1,8 +1,13 @@
-import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import { auth, signOut } from "../../firebaseAuth";
+import { Outlet, useNavigate } from "react-router-dom";
+
+// components
+import { auth } from "../../firebaseAuth";
+import { Layout } from "antd";
+import { Content } from "antd/lib/layout/layout";
+import SideBar from "./components/sideBar";
+import "./dashboard.css";
 
 const DashboardPage: React.FC = () => {
   const navigate = useNavigate();
@@ -15,10 +20,12 @@ const DashboardPage: React.FC = () => {
   }, [user, navigate, loading]);
 
   return (
-    <div>
-      {user && <span>{user.displayName}</span>}{" "}
-      <Button onClick={() => signOut()}>Sign out</Button>
-    </div>
+    <Layout style={{ height: "100vh" }}>
+      <SideBar />
+      <Content>
+        <Outlet />
+      </Content>
+    </Layout>
   );
 };
 
