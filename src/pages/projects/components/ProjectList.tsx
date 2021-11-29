@@ -44,10 +44,10 @@ const ProjectList: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="project-list">
       {projectList?.map((project) => (
         <ProjectCard
-          key={project.uid}
+          key={project.id}
           project={project}
           onProjectSelect={handleProjectSelect}
         />

@@ -18,9 +18,9 @@ interface ITodo {
   dueDate: Date;
 }
 interface IProject {
-  uid?: string;
+  id?: string;
   ownerId: string;
-  createdDate: Date;
+  createdDate: number;
   name: string;
   todos: ITodo[];
 }

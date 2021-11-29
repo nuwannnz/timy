@@ -1,9 +1,8 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Layout, Typography } from "antd";
+import { Layout } from "antd";
 import { Content, Header } from "antd/lib/layout/layout";
 import React from "react";
 import ProjectList from "./components/ProjectList";
-import ProjectsPageHeader from "./components/projectsPageHeader";
+import ProjectsPageHeader from "./components/ProjectsPageHeader";
 import "./projects.css";
 
 const ProjectsPage: React.FC = () => {
