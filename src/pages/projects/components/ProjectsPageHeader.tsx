@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Typography } from "antd";
+import { Button, PageHeader, Typography } from "antd";
 import React, { useState } from "react";
 import AddProjectModal from "./AddProjectModal";
 
@@ -10,18 +10,24 @@ const ProjectsPageHeader: React.FC = () => {
 
   return (
     <>
-      <div className="project-page-header">
-        <Title level={2} style={{ marginBottom: "0px" }}>
+      {/* <div className="project-page-header"> */}
+      {/* <Title level={2} style={{ marginBottom: "0px" }}>
           Projects
-        </Title>
-        <Button
-          type="primary"
-          style={{ marginLeft: "20px" }}
-          onClick={() => setAddProjectModalVisible(true)}
-        >
-          <PlusOutlined />
-        </Button>
-      </div>
+        </Title> */}
+
+      <PageHeader
+        title="Projects"
+        extra={[
+          <Button
+            type="primary"
+            style={{ marginLeft: "20px" }}
+            onClick={() => setAddProjectModalVisible(true)}
+          >
+            Create project
+          </Button>,
+        ]}
+      />
+      {/* </div> */}
       <AddProjectModal
         isOpen={addProjectModalVisible}
         onClose={() => setAddProjectModalVisible(false)}

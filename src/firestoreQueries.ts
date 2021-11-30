@@ -8,6 +8,9 @@ import {
   doc,
   addDoc,
   documentId,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import { initializeFirebase } from "./firebase";
 
@@ -65,4 +68,56 @@ const addProject = async (project: IProject): Promise<IProject | null> => {
   return createdDoc;
 };
 
-export { queryUser, addUser, queryProjects, queryProjectById, addProject };
+const addTodo = async (
+  projectId: string,
+  todo: ITodo
+): Promise<IProject | null> => {
+  const projectDocRef = doc(db, COLLECTIONS.PROJECTS, projectId);
+
+  await updateDoc(projectDocRef, {
+    todos: arrayUnion(todo),
+  });
+
+  const updatedDoc = await queryProjectById(projectId);
+  return updatedDoc;
+};
+
+const deleteTodo = async (
+  projectId: string,
+  todo: ITodo
+): Promise<IProject | null> => {
+  const projectDocRef = doc(db, COLLECTIONS.PROJECTS, projectId);
+
+  await updateDoc(projectDocRef, {
+    todos: arrayRemove(todo),
+  });
+
+  const updatedDoc = await queryProjectById(projectId);
+  return updatedDoc;
+};
+
+const updateProject = async (
+  projectId: string,
+  project: IProject
+): Promise<IProject | null> => {
+  const projectDocRef = doc(db, COLLECTIONS.PROJECTS, projectId);
+
+  delete project.id;
+  await updateDoc(projectDocRef, {
+    ...project,
+  });
+
+  const updatedDoc = await queryProjectById(projectId);
+  return updatedDoc;
+};
+
+export {
+  queryUser,
+  addUser,
+  queryProjects,
+  queryProjectById,
+  addProject,
+  addTodo,
+  deleteTodo,
+  updateProject,
+};

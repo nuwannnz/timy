@@ -1,4 +1,4 @@
-import { Form, Input, Modal } from "antd";
+import { Form, Input, message, Modal } from "antd";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,9 +35,16 @@ const AddProjectModal: React.FC<Props> = ({ isOpen, onClose }) => {
       form.resetFields();
       onClose();
       dispatch(resetAddProjectData());
-      // TODO: show notification
+      message.success("Successfully created new project");
     }
   }, [addProjectData]);
+
+  useEffect(() => {
+    if (addProjectError) {
+      message.error(`${addProjectError}`);
+      dispatch(resetAddProjectData());
+    }
+  }, [addProjectError]);
 
   const handleOk = () => {
     form.validateFields().then((values: IAddProjectFormFields) => {
