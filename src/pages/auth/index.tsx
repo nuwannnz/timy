@@ -20,11 +20,11 @@ const LoginPage: React.FC = () => {
 
   return (
     <Layout>
-      <Header className="login-header">
+      {/* <Header className="login-header">
         <Title level={3} className="login-title">
           Login to Bloggy
         </Title>
-      </Header>
+      </Header> */}
       <Layout>
         <Content>
           <LoginForm
