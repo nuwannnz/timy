@@ -76,6 +76,7 @@ const AddTodoForm: React.FC<Props> = ({ projectId }) => {
       <Button
         type="primary"
         htmlType="submit"
+        title="Add todo"
         icon={<PlusOutlined />}
         loading={loading}
       />

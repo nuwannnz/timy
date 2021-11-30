@@ -1,5 +1,4 @@
-import { Alert, Col, Grid, Row, Spin } from "antd";
-import { Content } from "antd/lib/layout/layout";
+import { Alert, Col, Empty, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useSelector, useDispatch } from "react-redux";
@@ -71,7 +70,12 @@ const ProjectList: React.FC = () => {
 
   return (
     <>
-      {/* <div className="project-list"> */}
+      {projectList?.length === 0 && (
+        <Empty
+          description="You don't have any projects yet"
+          style={{ marginTop: "100px" }}
+        />
+      )}
       <Row gutter={[16, 16]} className="project-list">
         {projectList?.map((project) => (
           <Col key={project.id} span={6}>
@@ -82,7 +86,6 @@ const ProjectList: React.FC = () => {
           </Col>
         ))}
       </Row>
-      {/* </div> */}
       <ProjectDetailsModal
         project={selectedProject as IProject}
         isOpen={isProjectDetailsModalVisible}
