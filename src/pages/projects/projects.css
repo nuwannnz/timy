@@ -1,0 +1,38 @@
+.project-layout {
+  height: 100%;
+}
+
+.project-header {
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+.project-page-header {
+  display: flex;
+  align-items: center;
+}
+
+.project-content {
+  width: 100%;
+  height: 100%;
+  padding: 0px 50px;
+}
+
+.project-list {
+  padding: 0px 20px;
+  margin: 0px !important;
+}
+
+.todo-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-item-title {
+  margin: 0px 20px;
+}
+
+.todo-delete-btn {
+  margin-left: 10px;
+}
